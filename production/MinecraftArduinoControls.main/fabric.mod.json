@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "arduinoctrls",
+  "version": "v0.0.1alpha01",
+
+  "name": "Minecraft Arduino Controls",
+  "description": "A mod that allows for communication between the Minecraft client and an Arduino.",
+  "authors": [
+    "Jonas_Jones"
+  ],
+  "contact": {
+    "homepage": "https://jonasjones.me/MinecraftArduinoControls",
+    "sources": "https://github.com/J-onasJones/MinecraftArduinoControls"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/arduinoctrls/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "me.jonasjones.arduinoctrls.ArduinoControls"
+    ]
+  },
+  "mixins": [
+    "arduinoctrls.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "me/jonasjones/arduinoctrls/mixin/ArduinoMixin": {
+      "init()V": "Lnet/minecraft/class_442;method_25426()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "me/jonasjones/arduinoctrls/mixin/ArduinoMixin": {
+        "init()V": "Lnet/minecraft/class_442;method_25426()V"
+      }
+    }
+  }
+}
