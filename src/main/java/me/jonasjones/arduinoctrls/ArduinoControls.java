@@ -1,36 +1,37 @@
 package me.jonasjones.arduinoctrls;
 
+import me.jonasjones.arduinoctrls.config.ModConfigs;
 import me.jonasjones.arduinoctrls.debug.LedBlink;
-import net.fabricmc.api.ModInitializer;
+import me.jonasjones.arduinoctrls.util.VerboseLogger;
+import net.fabricmc.api.ClientModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ArduinoControls implements ModInitializer {
+public class ArduinoControls implements ClientModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger("arduinoctrls");
+
+	public static final String MOD_ID = "arduinoctrls";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static Logger VERBOSELOGGER = LoggerFactory.getLogger(MOD_ID + " - VERBOSE LOGGER");
 
 	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+	public void onInitializeClient() {
+		// register configs
+		ModConfigs.registerConfigs();
 
+		//message from mod to confirm that it has been loaded
 		LOGGER.info("UwU from Arduino Controls!");
-		try {
+
+		//make verbose logger show that it is active
+		VerboseLogger.info("Verbose Logger is now logging.");
+
+		//blink LED on startup
+		/*try {
 			LedBlink.initialisation();
 		} catch (InterruptedException e) {
 			LOGGER.info("Failed to make Arduino LED blink. ARDUINO NOT CONNECTED!");
-		}
+		}*/
 	}
 }
-/*
-//TODO:
-- Full control over all programmable pins of all known raspberry pi's
-- system to flash program onto arduino with ingame editor
-- scratch system that allows for multiple event triggering when something happens
-- cry because mojang UI system sucks ass
-- make own library that allows for easy UI implementation
-
-*/

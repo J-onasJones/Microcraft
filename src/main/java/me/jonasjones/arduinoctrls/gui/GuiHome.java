@@ -23,7 +23,7 @@ public class GuiHome extends Screen {
         this.addDrawableChild(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 12, 150, 20, Text.of("Configure Microcontrollers"), (button) -> {
             this.client.setScreen(new SelectDevice(this));
         }));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 5, this.height / 6 + 12, 150, 20, Text.of("Settings"), (button) -> {
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + 5, this.height / 6 + 12, 150, 20, Text.of("Configure MicrocontrollerMC"), (button) -> {
             this.client.setScreen(new ModSettings(this));
         }));
 

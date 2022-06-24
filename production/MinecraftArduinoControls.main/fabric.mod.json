@@ -3,14 +3,15 @@
   "id": "arduinoctrls",
   "version": "v0.0.1alpha01",
 
-  "name": "Minecraft Arduino Controls",
-  "description": "A mod that allows for communication between the Minecraft client and an Arduino.",
+  "name": "MicrocontrollerMC",
+  "description": "A mod that allows for communication between the Minecraft client and multiple microcontrollers, allowing for ingame triggers of actions.",
   "authors": [
     "Jonas_Jones"
   ],
   "contact": {
-    "homepage": "https://jonasjones.me/MinecraftArduinoControls",
-    "sources": "https://github.com/J-onasJones/MinecraftArduinoControls"
+    "homepage": "https://jonasjones.me/MicrocontrollerMC",
+    "sources": "https://github.com/J-onasJones/MicrocontrollerMC",
+    "issues": "https://github.com/J-onasJones/MicrocontrollerMC/issues"
   },
 
   "license": "CC0-1.0",
@@ -18,7 +19,7 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": [
+    "client": [
       "me.jonasjones.arduinoctrls.ArduinoControls"
     ]
   },
@@ -34,5 +35,12 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.com/invite/V2EsuUVmWh"
+      }
+    }
   }
 }
