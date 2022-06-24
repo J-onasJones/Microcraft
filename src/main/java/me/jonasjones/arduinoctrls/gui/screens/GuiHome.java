@@ -1,6 +1,5 @@
-package me.jonasjones.arduinoctrls.gui;
+package me.jonasjones.arduinoctrls.gui.screens;
 
-import me.jonasjones.arduinoctrls.gui.screens.ModSettings;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;

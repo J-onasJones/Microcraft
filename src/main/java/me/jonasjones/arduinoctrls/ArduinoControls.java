@@ -18,14 +18,11 @@ public class ArduinoControls implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		// register configs
-		ModConfigs.registerConfigs();
-
 		//message from mod to confirm that it has been loaded
 		LOGGER.info("UwU from Arduino Controls!");
 
-		//make verbose logger show that it is active
-		VerboseLogger.info("Verbose Logger is now logging.");
+		// register configs
+		ModConfigs.registerConfigs();
 
 		//blink LED on startup
 		/*try {

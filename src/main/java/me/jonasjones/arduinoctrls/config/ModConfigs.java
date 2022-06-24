@@ -3,6 +3,7 @@ package me.jonasjones.arduinoctrls.config;
 import com.mojang.datafixers.util.Pair;
 
 import me.jonasjones.arduinoctrls.ArduinoControls;
+import me.jonasjones.arduinoctrls.util.VerboseLogger;
 
 public class ModConfigs {
     public static SimpleConfig CONFIGMAIN;
@@ -17,6 +18,7 @@ public class ModConfigs {
     public static Boolean BOARDMELTING;
     public static Boolean VERBOSE = false; //needs to be set to false since the verbose logger is called before config file is fully loaded
     public static String EDITOR;
+    public static String CUSTOMEDITOR;
 
     //configList
     public static Boolean DISPLAYENTRYALL;
@@ -47,6 +49,11 @@ public class ModConfigs {
         CONFIGLISTS = SimpleConfig.of(ArduinoControls.MOD_ID + "-lists").provider(configLists).request();
 
         assignConfigs();
+
+        //make verbose logger show that it is active and print configs to logger
+        VerboseLogger.info("Verbose Logger is now logging.");
+        VerboseLogger.info("Loaded config file CONFIGMAIN successfully: " + configMain.getConfigsList().size() + " configurations have been set properly");
+        VerboseLogger.info("Loaded config file CONFIGMAIN successfully: " + configLists.getConfigsList().size() + " configurations have been set properly");
     }
 
     private static void createConfigs() {
@@ -57,6 +64,7 @@ public class ModConfigs {
         configMain.addKeyValuePair(new Pair<>("fun.boardMelting", false), "Whether or not the board should have a flame overlay instead of being greyed out when not connected.");
         configMain.addKeyValuePair(new Pair<>("debug.verbose", false), "Toggle verbose console output.");
         configMain.addKeyValuePair(new Pair<>("editor.default", "ingame"), "The default editor for the board program. All valid default Editors can be found at: https://github.com/J-onasJones/MicrocontrollerMC/wiki/Board-Program-Editors#available-editors");
+        configMain.addKeyValuePair(new Pair<>("editor.custom", "None"), "The editor to choose if 'editor.default' is set to 'custom'.");
 
         //configLists
         configLists.addKeyValuePair(new Pair<>("displayEntry.all", false), "Whether or not to display all entries. This overrides all other states except for debug and experimental entries. More infos can be found at: https://github.com/J-onasJones/MicrocontrollerMC/wiki/Pin-Map-Entries#list-of-all-entries");
@@ -76,7 +84,6 @@ public class ModConfigs {
         configLists.addKeyValuePair(new Pair<>("displayEntryIs.playerWalkRight", true), "Display Is Player Walking Right Entry");
         configLists.addKeyValuePair(new Pair<>("displayEntryIs.playerWalkLeft", true), "Display Is Player Walking Left Entry");
         configLists.addKeyValuePair(new Pair<>("displayEntryIs.playerSneak", true), "Display Is Player Sneaking Entry");
-        
     }
 
     private static void assignConfigs() {
@@ -86,6 +93,7 @@ public class ModConfigs {
         BOARDMELTING = CONFIGMAIN.getOrDefault("fun.boardMelting", false);
         VERBOSE = CONFIGMAIN.getOrDefault("debug.verbose", false);
         EDITOR = CONFIGMAIN.getOrDefault("editor.default", "ingame");
+        CUSTOMEDITOR = CONFIGMAIN.getOrDefault("editor.custom", "None");
 
         DISPLAYENTRYALL = CONFIGLISTS.getOrDefault("displayEntry.all", false);
         DISPLAYENTRYPLAYERJUMP = CONFIGLISTS.getOrDefault("displayEntry.playerJump", true);
@@ -104,7 +112,5 @@ public class ModConfigs {
         DISPLAYENTRYISPLAYERWALKRIGHT = CONFIGLISTS.getOrDefault("displayEntryIs.playerWalkRight", true);
         DISPLAYENTRYISPLAYERWALKLEFT = CONFIGLISTS.getOrDefault("displayEntryIs.playerWalkLeft", true);
         DISPLAYENTRYISPLAYERSNEAK = CONFIGLISTS.getOrDefault("displayEntryIs.playerSneak", true);
-
-        System.out.println("All " + configMain.getConfigsList().size() + " have been set properly");
     }
 }

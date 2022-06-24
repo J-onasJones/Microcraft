@@ -1,6 +1,6 @@
 package me.jonasjones.arduinoctrls.mixin;
 
-import me.jonasjones.arduinoctrls.gui.GuiHome;
+import me.jonasjones.arduinoctrls.gui.screens.GuiHome;
 import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;

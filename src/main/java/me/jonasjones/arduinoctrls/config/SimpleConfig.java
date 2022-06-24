@@ -22,6 +22,7 @@ package me.jonasjones.arduinoctrls.config;
  * THE SOFTWARE.
  */
 
+import me.jonasjones.arduinoctrls.ArduinoControls;
 import me.jonasjones.arduinoctrls.util.VerboseLogger;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -137,13 +138,13 @@ public class SimpleConfig {
         String identifier = "Config '" + request.filename + "'";
 
         if( !request.file.exists() ) {
-            VerboseLogger.info( identifier + " is missing, generating default one..." );
+            ArduinoControls.LOGGER.info( identifier + " is missing, generating default one..." );
 
             try {
                 createConfig();
             } catch (IOException e) {
-                VerboseLogger.error( identifier + " failed to generate!" );
-                VerboseLogger.trace(String.valueOf(e));
+                ArduinoControls.LOGGER.error( identifier + " failed to generate!" );
+                ArduinoControls.LOGGER.trace(String.valueOf(e));
                 broken = true;
             }
         }
@@ -152,8 +153,8 @@ public class SimpleConfig {
             try {
                 loadConfig();
             } catch (Exception e) {
-                VerboseLogger.error( identifier + " failed to load!" );
-                VerboseLogger.trace(String.valueOf(e));
+                ArduinoControls.LOGGER.error( identifier + " failed to load!" );
+                ArduinoControls.LOGGER.trace(String.valueOf(e));
                 broken = true;
             }
         }

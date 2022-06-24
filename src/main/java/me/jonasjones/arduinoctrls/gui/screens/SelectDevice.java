@@ -1,4 +1,4 @@
-package me.jonasjones.arduinoctrls.gui;
+package me.jonasjones.arduinoctrls.gui.screens;
 
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.EnvType;
