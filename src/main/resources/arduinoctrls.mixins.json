@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "ArduinoMixin"
+    "ArduinoMixin",
+    "GameMenuScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

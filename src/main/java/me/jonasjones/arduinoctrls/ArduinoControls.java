@@ -21,7 +21,16 @@ public class ArduinoControls implements ModInitializer {
 		try {
 			LedBlink.initialisation();
 		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+			LOGGER.info("Failed to make Arduino LED blink. ARDUINO NOT CONNECTED!");
 		}
 	}
 }
+/*
+//TODO:
+- Full control over all programmable pins of all known raspberry pi's
+- system to flash program onto arduino with ingame editor
+- scratch system that allows for multiple event triggering when something happens
+- cry because mojang UI system sucks ass
+- make own library that allows for easy UI implementation
+
+*/
