@@ -1,4 +1,4 @@
-package me.jonasjones.arduinoctrls.config;
+package me.jonasjones.microcraft.config;
 /*
  * Copyright (c) 2021 magistermaks
  * Slightly modified by Jonas_Jones 2022
@@ -22,8 +22,8 @@ package me.jonasjones.arduinoctrls.config;
  * THE SOFTWARE.
  */
 
-import me.jonasjones.arduinoctrls.ArduinoControls;
-import me.jonasjones.arduinoctrls.util.VerboseLogger;
+import me.jonasjones.microcraft.Microcraft;
+import me.jonasjones.microcraft.util.VerboseLogger;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
@@ -138,13 +138,13 @@ public class SimpleConfig {
         String identifier = "Config '" + request.filename + "'";
 
         if (!request.file.exists()) {
-            ArduinoControls.LOGGER.info(identifier + " is missing, generating default one...");
+            Microcraft.LOGGER.info(identifier + " is missing, generating default one...");
 
             try {
                 createConfig();
             } catch (IOException e) {
-                ArduinoControls.LOGGER.error(identifier + " failed to generate!");
-                ArduinoControls.LOGGER.trace(String.valueOf(e));
+                Microcraft.LOGGER.error(identifier + " failed to generate!");
+                Microcraft.LOGGER.trace(String.valueOf(e));
                 broken = true;
             }
         }
@@ -153,8 +153,8 @@ public class SimpleConfig {
             try {
                 loadConfig();
             } catch (Exception e) {
-                ArduinoControls.LOGGER.error(identifier + " failed to load!");
-                ArduinoControls.LOGGER.trace(String.valueOf(e));
+                Microcraft.LOGGER.error(identifier + " failed to load!");
+                Microcraft.LOGGER.trace(String.valueOf(e));
                 broken = true;
             }
         }

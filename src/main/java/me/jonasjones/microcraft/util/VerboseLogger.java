@@ -1,33 +1,32 @@
-package me.jonasjones.arduinoctrls.util;
+package me.jonasjones.microcraft.util;
 
-import jdk.jfr.StackTrace;
-import me.jonasjones.arduinoctrls.ArduinoControls;
-import me.jonasjones.arduinoctrls.config.ModConfigs;
+import me.jonasjones.microcraft.Microcraft;
+import me.jonasjones.microcraft.config.ModConfigs;
 
 public class VerboseLogger {
     public static void info(String message) {
         if (ModConfigs.VERBOSE) {
-            ArduinoControls.VERBOSELOGGER.info(message);
+            Microcraft.VERBOSELOGGER.info(message);
         }
     }
     public void debug(String message) {
         if (ModConfigs.VERBOSE) {
-            ArduinoControls.VERBOSELOGGER.debug(message);
+            Microcraft.VERBOSELOGGER.debug(message);
         }
     }
     public static void error(String message) {
         if (ModConfigs.VERBOSE) {
-            ArduinoControls.VERBOSELOGGER.error(message);
+            Microcraft.VERBOSELOGGER.error(message);
         }
     }
     public static void trace( String message) {
         if (ModConfigs.VERBOSE) {
-            ArduinoControls.VERBOSELOGGER.trace(message);
+            Microcraft.VERBOSELOGGER.trace(message);
         }
     }
     public static void warn( String message) {
         if (ModConfigs.VERBOSE) {
-            ArduinoControls.VERBOSELOGGER.warn(message);
+            Microcraft.VERBOSELOGGER.warn(message);
         }
     }
 }

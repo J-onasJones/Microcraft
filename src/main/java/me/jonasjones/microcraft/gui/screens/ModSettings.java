@@ -1,4 +1,4 @@
-package me.jonasjones.arduinoctrls.gui.screens;
+package me.jonasjones.microcraft.gui.screens;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

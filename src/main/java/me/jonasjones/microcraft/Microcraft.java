@@ -1,25 +1,32 @@
-package me.jonasjones.arduinoctrls;
+package me.jonasjones.microcraft;
 
-import me.jonasjones.arduinoctrls.config.ModConfigs;
-import me.jonasjones.arduinoctrls.debug.LedBlink;
-import me.jonasjones.arduinoctrls.util.VerboseLogger;
+import me.jonasjones.microcraft.config.ModConfigs;
+import me.jonasjones.microcraft.util.boardmanager.SerialNumberScanner;
 import net.fabricmc.api.ClientModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ArduinoControls implements ClientModInitializer {
+import java.io.IOException;
+
+public class Microcraft implements ClientModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
 
-	public static final String MOD_ID = "arduinoctrls";
+	public static final String MOD_ID = "microcraft";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static Logger VERBOSELOGGER = LoggerFactory.getLogger(MOD_ID + " - VERBOSE LOGGER");
+
+	public static boolean enabled = true;
+
+	public static void toggle() {
+		enabled = !enabled;
+	}
 
 	@Override
 	public void onInitializeClient() {
 		//message from mod to confirm that it has been loaded
-		LOGGER.info("UwU from Arduino Controls!");
+		LOGGER.info("Microcraft Initialized!");
 
 		// register configs
 		ModConfigs.registerConfigs();

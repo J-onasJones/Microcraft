@@ -1,12 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.jonasjones.arduinoctrls.mixin",
+  "package": "me.jonasjones.microcraft.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "ArduinoMixin",
+    "TitleScreenButtonMixin",
     "GameMenuScreenMixin"
   ],
   "injectors": {

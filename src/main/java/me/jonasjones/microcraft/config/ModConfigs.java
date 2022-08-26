@@ -1,9 +1,9 @@
-package me.jonasjones.arduinoctrls.config;
+package me.jonasjones.microcraft.config;
 
 import com.mojang.datafixers.util.Pair;
 
-import me.jonasjones.arduinoctrls.ArduinoControls;
-import me.jonasjones.arduinoctrls.util.VerboseLogger;
+import me.jonasjones.microcraft.Microcraft;
+import me.jonasjones.microcraft.util.VerboseLogger;
 
 public class ModConfigs {
     public static SimpleConfig CONFIGMAIN;
@@ -45,8 +45,8 @@ public class ModConfigs {
 
         createConfigs();
 
-        CONFIGMAIN = SimpleConfig.of(ArduinoControls.MOD_ID + "-main").provider(configMain).request();
-        CONFIGLISTS = SimpleConfig.of(ArduinoControls.MOD_ID + "-lists").provider(configLists).request();
+        CONFIGMAIN = SimpleConfig.of(Microcraft.MOD_ID + "-main").provider(configMain).request();
+        CONFIGLISTS = SimpleConfig.of(Microcraft.MOD_ID + "-lists").provider(configLists).request();
 
         assignConfigs();
 

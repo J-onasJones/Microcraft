@@ -1,4 +1,4 @@
-package me.jonasjones.arduinoctrls.gui.screens;
+package me.jonasjones.microcraft.gui.screens;
 
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.EnvType;
@@ -49,10 +49,10 @@ public class SelectDevice extends Screen {
         this.client.keyboard.setRepeatEvents(true);
         this.searchBox = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 22, 200, 20, this.searchBox, Text.translatable("selectWorld.search"));
         this.searchBox.setChangedListener((search) -> {
-            this.levelList.filter(search);
+            //this.levelList.filter(search);
         });
         SelectWorldScreen uwu = new SelectWorldScreen(this);
-        this.levelList = new WorldListWidget(uwu, this.client, this.width, this.height, 48, this.height - 64, 36, this.getSearchFilter(), this.levelList);
+        //this.levelList = new WorldListWidget(uwu, this.client, this.width, this.height, 48, this.height - 64, 36, this.getSearchFilter(), this.levelList);
         this.addSelectableChild(this.searchBox);
         this.addSelectableChild(this.levelList);
         this.selectButton = (ButtonWidget)this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height - 52, 150, 20, Text.translatable("selectWorld.select"), (button) -> {
@@ -91,7 +91,7 @@ public class SelectDevice extends Screen {
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         this.tooltip = null;
-        this.levelList.render(matrices, mouseX, mouseY, delta);
+        //this.levelList.render(matrices, mouseX, mouseY, delta);
         this.searchBox.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
         super.render(matrices, mouseX, mouseY, delta);
