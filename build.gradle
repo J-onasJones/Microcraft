@@ -32,9 +32,7 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	implementation files('libs/arduino.jar')
-	implementation files('libs/jSerialComm-1.3.11.jar')
-	implementation files('libs/RXTXcomm.jar')
+	implementation files('libs/jSerialComm-2.9.2.jar')
 }
 
 processResources {
