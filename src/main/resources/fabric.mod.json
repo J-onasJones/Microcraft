@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "arduinoctrls",
-  "version": "v0.0.1alpha01",
+  "id": "microcraft",
+  "version": "${version}",
 
-  "name": "MicrocontrollerMC",
-  "description": "A mod that allows for communication between the Minecraft client and multiple microcontrollers, allowing for ingame triggers of actions.",
+  "name": "Microcraft",
+  "description": "A mod that allows for communication between the Minecraft client and microcontrollers and singleboard computers, allowing for ingame triggers of actions.",
   "authors": [
     "Jonas_Jones"
   ],
@@ -15,21 +15,20 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/arduinoctrls/icon.png",
+  "icon": "assets/microcraft/textures/gui/button_icon.png",
 
   "environment": "client",
   "entrypoints": {
     "client": [
-      "me.jonasjones.arduinoctrls.ArduinoControls"
+      "me.jonasjones.microcraft.Microcraft"
     ]
   },
   "mixins": [
-    "arduinoctrls.mixins.json"
+    "microcraft.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.14.6",
-    "fabric": "*",
     "minecraft": "~1.19",
     "java": ">=17"
   },
