@@ -1,5 +1,5 @@
 # Microcraft
-A Minecraft mod that allows Microcontroller and Singleboard computer control
+A Minecraft mod that allows for Microcontroller and Singleboard computer control (and everything else that supports serial connections).
 
 <a href="https://github.com/J-onasJones/Microcraft/blob/master/LICENSE"><img src="https://img.shields.io/github/license/J-onasJones/Microcraft?style=flat&color=900c3f" alt="License"></a>
 <a href="https://discord.gg/V2EsuUVmWh"><img src="https://img.shields.io/discord/702180921234817135?color=5865f2&label=Discord&style=flat" alt="Discord"></a>
@@ -13,7 +13,7 @@ A Minecraft mod that allows Microcontroller and Singleboard computer control
 You can connect a button to your Microcontroller and make your player jump when pressing it or you can make a small LED light up as soon as you crouch. You can also expand on said example by e.g. displaying your health on an LED matrix (ft. my brother). This and some more examples can be viewed on [Github](https://github.com/J-onasJones/Microcraft/tree/examples).
 Literally anything can be triggered and if it isn't implemented yet, open an issue on GitHub and make a feature request
 
-**This mod is in an early stage and may contain some bugs**
+**This mod is in an early stage and may contain some bugs** - *DISCLAIMER: **big understatment** the mod is nowhere close to being in a state where it is usable*
 
 ### About the mod
 This mod allows for communication between the minecraft client and a Microcontroller or singleboard computer (e.g. Raspberry PI). In general every device that supports a serial connection can be used. The connection is bi-directional, meaning that you can trigger something from both ends.
