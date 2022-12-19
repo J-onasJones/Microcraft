@@ -27,9 +27,9 @@ public class GameMenuScreenMixin extends Screen {
         int buttonX = this.width / 2 + 108;
         int buttonY = this.height / 4 + 8;
 
-        this.addDrawableChild(new ButtonWidget(buttonX, buttonY, 20, 20, Text.of(""), (button) -> {
+        this.addDrawableChild(ButtonWidget.builder(Text.of(""), (button) -> {
             this.client.setScreen(new GuiHome(this));
-        }));
+        }).dimensions(buttonX, buttonY, 20, 20).build());
         this.addDrawableChild( new TexturedButtonWidget(buttonX, buttonY, 20, 20, 0, 0, 0, ICON_TEXTURE, 20, 20, (buttonWidget) -> this.client.setScreen(new GuiHome(this))));
 
     }

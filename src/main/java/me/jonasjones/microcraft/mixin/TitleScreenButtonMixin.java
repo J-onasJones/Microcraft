@@ -1,7 +1,6 @@
 package me.jonasjones.microcraft.mixin;
 
 import me.jonasjones.microcraft.gui.screens.BoardScreen;
-import me.jonasjones.microcraft.gui.screens.GuiHome;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -29,9 +28,9 @@ public abstract class TitleScreenButtonMixin extends Screen {
 		int buttonX = this.width / 2 + 104;
 		int buttonY = y + spacingY * 2;
 
-		this.addDrawableChild(new ButtonWidget(buttonX, buttonY, 20, 20, Text.of(""), (button) -> {
+		this.addDrawableChild(ButtonWidget.builder( Text.of(""), (button) -> {
 			this.client.setScreen(new BoardScreen(this));
-		}));
+		}).dimensions(buttonX, buttonY, 20, 20).build());
 		this.addDrawableChild( new TexturedButtonWidget(buttonX, buttonY, 20, 20, 0, 0, 0, ICON_TEXTURE, 20, 20, (buttonWidget) -> this.client.setScreen(new BoardScreen(this))));
 	}
 }

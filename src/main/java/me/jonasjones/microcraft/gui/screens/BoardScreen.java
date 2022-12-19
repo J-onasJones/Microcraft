@@ -20,16 +20,16 @@ public class BoardScreen extends Screen {
     protected void init() {
 
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 12, 150, 20, Text.of("Configure Microcontrollers"), (button) -> {
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Configure Microcontrollers"), (button) -> {
             this.client.setScreen(new SelectDevice(this));
-        }));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 5, this.height / 6 + 12, 150, 20, Text.of("Configure Microcraft"), (button) -> {
+        }).dimensions(this.width / 2 - 155, this.height / 6 + 12, 150, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Configure Microcraft"), (button) -> {
             this.client.setScreen(new ModSettings(this));
-        }));
+        }).dimensions(this.width / 2 + 5, this.height / 6 + 12, 150, 20).build());
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height / 6 + 168, 200, 20, ScreenTexts.DONE, (button) -> {
+        this.addDrawableChild(ButtonWidget.builder(ScreenTexts.DONE, (button) -> {
             this.client.setScreen(this.parent);
-        }));
+        }).dimensions(this.width / 2 - 100, this.height / 6 + 168, 200, 20).build());
         this.client.setScreen(new ArduinoNanoWidget(this.parent));
     }
 

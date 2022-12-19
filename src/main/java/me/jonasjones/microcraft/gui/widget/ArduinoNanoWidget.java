@@ -35,20 +35,19 @@ public class ArduinoNanoWidget extends Screen {
     }
     protected void init() {
         //TODO: get current profile
-        addDrawableChild(new ButtonWidget(this.width / 2 - 100, 40, 200, 20, Text.of("[Profile]"), (buttonWidget) -> this.client.setScreen(new ProfileSelectionScreen(this))));
+        addDrawableChild(ButtonWidget.builder(Text.of("[Profile]"), (buttonWidget) -> this.client.setScreen(new ProfileSelectionScreen(this))).dimensions(this.width / 2 - 100, 40, 200, 20).build());
 
         //TODO: make Board texture clickable to select different texture.
         this.addDrawableChild(new TexturedButtonWidget(this.width / 2 - 26, this.height / 2 - 65, 52, 130, 0, 0, 130, BOARD_TEXTURE, 52, 130, (buttonWidget) -> this.client.setScreen(this)));
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 30, 200, 20, Text.of("About Microcraft"), (buttonWidget) -> this.client.setScreen(new ModCreditsScreen(this))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 55, 200, 20, Text.of("Advanced Pin Mapping"), (buttonWidget) -> this.client.setScreen(new AdvancedPinMappingScreen(this))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 80, 200, 20, Text.of("Advanced Board Settings"), (buttonWidget) -> this.client.setScreen(new AdvancedSettingsScreen(this))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 105, 200, 20, getToggleText(), (buttonWidget) -> Microcraft.toggle()));
-        this.addDrawableChild(new ButtonWidget(this.width - 60, this.height - 30, 50, 20, Text.of("Done"), (buttonWidget) -> this.client.setScreen(this.parent)));
-        this.addDrawableChild(new ButtonWidget(this.width - 210, this.height - 30, 140, 20, Text.of("Write Program to Board"), (buttonWidget) -> this.client.setScreen(this.parent)));
-        this.addDrawableChild(new ButtonWidget(this.width - 210, this.height - 55, 200, 20, Text.of("Microcraft Settings"), (buttonWidget) -> this.client.setScreen(new ModSettings(this))));
+        this.addDrawableChild(ButtonWidget.builder(Text.of("About Microcraft"), (buttonWidget) -> this.client.setScreen(new ModCreditsScreen(this))).dimensions(this.width / 2 - 100, this.height - 30, 200, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Advanced Pin Mapping"), (buttonWidget) -> this.client.setScreen(new AdvancedPinMappingScreen(this))).dimensions(this.width / 2 - 100, this.height - 55, 200, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Advanced Board Settings"), (buttonWidget) -> this.client.setScreen(new AdvancedSettingsScreen(this))).dimensions(this.width / 2 - 100, this.height - 80, 200, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(getToggleText(), (buttonWidget) -> Microcraft.toggle()).dimensions(this.width / 2 - 100, this.height - 105, 200, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Done"), (buttonWidget) -> this.client.setScreen(this.parent)).dimensions(this.width - 60, this.height - 30, 50, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Write Program to Board"), (buttonWidget) -> this.client.setScreen(this.parent)).dimensions(this.width - 210, this.height - 30, 140, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.of("Microcraft Settings"), (buttonWidget) -> this.client.setScreen(new ModSettings(this))).dimensions(this.width - 210, this.height - 55, 200, 20).build());
 
-        this.addDrawableChild(new )
 
     }
     private Text getToggleText() {
