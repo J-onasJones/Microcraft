@@ -1,6 +1,6 @@
 package me.jonasjones.microcraft.gui.screens;
 
-import me.jonasjones.microcraft.gui.widget.ArduinoNanoWidget;
+import me.jonasjones.microcraft.gui.widget.BoardConfigwidget;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -30,7 +30,7 @@ public class BoardScreen extends Screen {
         this.addDrawableChild(ButtonWidget.builder(ScreenTexts.DONE, (button) -> {
             this.client.setScreen(this.parent);
         }).dimensions(this.width / 2 - 100, this.height / 6 + 168, 200, 20).build());
-        this.client.setScreen(new ArduinoNanoWidget(this.parent));
+        this.client.setScreen(new BoardConfigwidget(this.parent));
     }
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
