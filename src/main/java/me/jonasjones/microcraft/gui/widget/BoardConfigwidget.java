@@ -57,8 +57,9 @@ public class BoardConfigwidget extends Screen {
                 .dimensions(this.width / 2 - 154, this.height - 52, 100, 20).build());
         this.addDrawableChild(ButtonWidget.builder(Text.of("Done"), (buttonWidget) -> this.client.setScreen(this.parent))
                 .dimensions(this.width / 2 + 4 + 76, this.height - 28, 75, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(Text.of("Save"), (buttonWidget) -> this.client.setScreen(this.parent))
-                .dimensions(this.width / 2, this.height - 28, 75 , 20).build());
+        ButtonWidget upload = this.addDrawableChild(ButtonWidget.builder(Text.of("Upload"), (buttonWidget) -> this.client.setScreen(this.parent))
+                .dimensions(this.width / 2, this.height - 28, 75, 20).build());
+        upload.active = false;
         this.addDrawableChild(ButtonWidget.builder(Text.of("Settings"), (buttonWidget) -> this.client.setScreen(new ModSettings(this)))
                 .dimensions(this.width / 2 - 75, this.height - 28, 70, 20).build());
 
