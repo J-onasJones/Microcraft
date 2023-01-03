@@ -1,4 +1,4 @@
-package me.jonasjones.microcraft.data;
+package me.jonasjones.microcraft.object;
 
 public class BoardData {
     public int arduinoNanoPins = 22;
