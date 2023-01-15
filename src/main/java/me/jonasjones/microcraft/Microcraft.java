@@ -1,8 +1,10 @@
 package me.jonasjones.microcraft;
 
 import me.jonasjones.microcraft.config.ModConfigs;
+import me.jonasjones.microcraft.config.ProfileConfig;
 import me.jonasjones.microcraft.util.boardmanager.SerialNumberScanner;
 import net.fabricmc.api.ClientModInitializer;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,5 +39,14 @@ public class Microcraft implements ClientModInitializer {
 		} catch (InterruptedException e) {
 			LOGGER.info("Failed to make Arduino LED blink. ARDUINO NOT CONNECTED!");
 		}*/
+		try {
+			ProfileConfig.uwu();
+		} catch (IOException e) {
+			LOGGER.error("AHHHHHHHHHHHHHHHHHHHHH IO");
+			System.out.print(e);
+		} catch (ParseException e) {
+			LOGGER.error("AHHHHHHHHHHHHHHHHHHHHH PARSE");
+			System.out.print(e);
+		}
 	}
 }
