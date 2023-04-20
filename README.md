@@ -7,7 +7,9 @@ A Minecraft mod that allows for Microcontroller and Singleboard computer control
 <a href="https://modrinth.com/mod/microcraft"><img src="https://img.shields.io/modrinth/dt/microcraft?logo=modrinth&label=&style=flat&color=242629&labelColor=00AF5C&logoColor=white" alt="Modrinth"></a>
 <a href="https://modrinth.com/mod/microcraft"><img src="https://img.shields.io/modrinth/game-versions/microcraft?logo=modrinth&color=242629&labelColor=00AF5C&logoColor=white"></a>
 
-<a align="center"><img src="https://jonasjones.me/uploads/mod-badges/support-fabric.png" width="250px"><img src="https://jonasjones.me/uploads/mod-badges/support-quilt.png" width="250px"><img src="https://jonasjones.me/uploads/mod-badges/no-support-forge.png" width="250px"></a>
+<a align="center"><img src="http://cdn.jonasjones.me/uploads/mod-badges/fabric-api.png" width="250px">
+<img src="http://cdn.jonasjones.me/uploads/mod-badges/no-support-forge.png" width="250px">
+<img src="http://cdn.jonasjones.me/uploads/mod-badges/available-modrinth.png" width="250px"><img src="http://cdn.jonasjones.me/uploads/mod-badges/support-fabric.png"  width="250px"><img src="http://cdn.jonasjones.me/uploads/mod-badges/support-quilt.png" width="250px"></a>
 
 ### Examples
 You can connect a button to your Microcontroller and make your player jump when pressing it or you can make a small LED light up as soon as you crouch. You can also expand on said example by e.g. displaying your health on an LED matrix (ft. my brother). This and some more examples can be viewed on [Github](https://github.com/J-onasJones/Microcraft/tree/examples).
