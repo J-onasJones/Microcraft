@@ -19,8 +19,6 @@ public class BoardScreen extends Screen {
     }
 
     protected void init() {
-
-
         this.addRenderableWidget(Button.builder(Component.nullToEmpty("Configure Microcontrollers"), (button) -> {
             this.minecraft.setScreen(new SelectDevice(this));
         }).bounds(this.width / 2 - 155, this.height / 6 + 12, 150, 20).build());
