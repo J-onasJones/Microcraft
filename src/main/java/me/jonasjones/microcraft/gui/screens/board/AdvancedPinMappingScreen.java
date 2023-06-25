@@ -1,24 +1,24 @@
 package me.jonasjones.microcraft.gui.screens.board;
 
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.Text;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
 public class AdvancedPinMappingScreen extends Screen {
 
     private final Screen parent;
 
     public AdvancedPinMappingScreen(Screen parent) {
-        super(Text.of("Advanced Pin Mapping"));
+        super(Component.nullToEmpty("Advanced Pin Mapping"));
         this.parent = parent;
     }
 
     protected void init() {
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(PoseStack matrices, int mouseX, int mouseY, float delta) {
         this.renderBackground(matrices);
-        drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 15, 16777215);
+        drawCenteredString(matrices, this.font, this.title, this.width / 2, 15, 16777215);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }

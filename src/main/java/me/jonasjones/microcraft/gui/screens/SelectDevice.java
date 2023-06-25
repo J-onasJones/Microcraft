@@ -1,18 +1,18 @@
 package me.jonasjones.microcraft.gui.screens;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.world.CreateWorldScreen;
-import net.minecraft.client.gui.screen.world.SelectWorldScreen;
-import net.minecraft.client.gui.screen.world.WorldListWidget;
-import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.screen.ScreenTexts;
-import net.minecraft.text.OrderedText;
-import net.minecraft.text.Text;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
+import net.minecraft.client.gui.screens.worldselection.SelectWorldScreen;
+import net.minecraft.client.gui.screens.worldselection.WorldSelectionList;
+import net.minecraft.network.chat.CommonComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -24,16 +24,16 @@ public class SelectDevice extends Screen {
     private static final Logger LOGGER = LogUtils.getLogger();
     protected final Screen parent;
     @Nullable
-    private List<OrderedText> tooltip;
-    private ButtonWidget deleteButton;
-    private ButtonWidget selectButton;
-    private ButtonWidget editButton;
-    private ButtonWidget recreateButton;
-    protected TextFieldWidget searchBox;
-    private WorldListWidget levelList;
+    private List<FormattedCharSequence> tooltip;
+    private Button deleteButton;
+    private Button selectButton;
+    private Button editButton;
+    private Button recreateButton;
+    protected EditBox searchBox;
+    private WorldSelectionList levelList;
 
     public SelectDevice(Screen parent) {
-        super(Text.translatable("selectWorld.title"));
+        super(Component.translatable("selectWorld.title"));
         this.parent = parent;
     }
 
@@ -47,32 +47,32 @@ public class SelectDevice extends Screen {
 
     protected void init() {
         //this.client.keyboard.setRepeatEvents(true);
-        this.searchBox = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 22, 200, 20, this.searchBox, Text.translatable("selectWorld.search"));
-        this.searchBox.setChangedListener((search) -> {
+        this.searchBox = new EditBox(this.font, this.width / 2 - 100, 22, 200, 20, this.searchBox, Component.translatable("selectWorld.search"));
+        this.searchBox.setResponder((search) -> {
             //this.levelList.filter(search);
         });
         SelectWorldScreen uwu = new SelectWorldScreen(this);
         //this.levelList = new WorldListWidget(uwu, this.client, this.width, this.height, 48, this.height - 64, 36, this.getSearchFilter(), this.levelList);
-        this.addSelectableChild(this.searchBox);
-        this.addSelectableChild(this.levelList);
-        this.selectButton = (ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("selectWorld.select"), (button) -> {
-            this.levelList.getSelectedAsOptional().ifPresent(WorldListWidget.WorldEntry::play);
-        }).dimensions(this.width / 2 - 154, this.height - 52, 150, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(Text.translatable("selectWorld.create"), (button) -> {
-            CreateWorldScreen.create(this.client, this);
-        }).dimensions(this.width / 2 + 4, this.height - 52, 150, 20).build());
-        this.editButton = (ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("selectWorld.edit"), (button) -> {
-            this.levelList.getSelectedAsOptional().ifPresent(WorldListWidget.WorldEntry::edit);
-        }).dimensions(this.width / 2 - 154, this.height - 28, 72, 20).build());
-        this.deleteButton = (ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("selectWorld.delete"), (button) -> {
-            this.levelList.getSelectedAsOptional().ifPresent(WorldListWidget.WorldEntry::deleteIfConfirmed);
-        }).dimensions(this.width / 2 - 76, this.height - 28, 72, 20).build());
-        this.recreateButton = (ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("selectWorld.recreate"), (button) -> {
-            this.levelList.getSelectedAsOptional().ifPresent(WorldListWidget.WorldEntry::recreate);
-        }).dimensions(this.width / 2 + 4, this.height - 28, 72, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(ScreenTexts.CANCEL, (button) -> {
-            this.client.setScreen(this.parent);
-        }).dimensions(this.width / 2 + 82, this.height - 28, 72, 20).build());
+        this.addWidget(this.searchBox);
+        this.addWidget(this.levelList);
+        this.selectButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.select"), (button) -> {
+            this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::joinWorld);
+        }).bounds(this.width / 2 - 154, this.height - 52, 150, 20).build());
+        this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.create"), (button) -> {
+            CreateWorldScreen.openFresh(this.minecraft, this);
+        }).bounds(this.width / 2 + 4, this.height - 52, 150, 20).build());
+        this.editButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.edit"), (button) -> {
+            this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::editWorld);
+        }).bounds(this.width / 2 - 154, this.height - 28, 72, 20).build());
+        this.deleteButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.delete"), (button) -> {
+            this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::deleteWorld);
+        }).bounds(this.width / 2 - 76, this.height - 28, 72, 20).build());
+        this.recreateButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.recreate"), (button) -> {
+            this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::recreateWorld);
+        }).bounds(this.width / 2 + 4, this.height - 28, 72, 20).build());
+        this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, (button) -> {
+            this.minecraft.setScreen(this.parent);
+        }).bounds(this.width / 2 + 82, this.height - 28, 72, 20).build());
         this.worldSelected(false);
         this.setInitialFocus(this.searchBox);
     }
@@ -81,27 +81,27 @@ public class SelectDevice extends Screen {
         return super.keyPressed(keyCode, scanCode, modifiers) ? true : this.searchBox.keyPressed(keyCode, scanCode, modifiers);
     }
 
-    public void close() {
-        this.client.setScreen(this.parent);
+    public void onClose() {
+        this.minecraft.setScreen(this.parent);
     }
 
     public boolean charTyped(char chr, int modifiers) {
         return this.searchBox.charTyped(chr, modifiers);
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(PoseStack matrices, int mouseX, int mouseY, float delta) {
         this.tooltip = null;
         //this.levelList.render(matrices, mouseX, mouseY, delta);
         this.searchBox.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
+        drawCenteredString(matrices, this.font, this.title, this.width / 2, 8, 16777215);
         super.render(matrices, mouseX, mouseY, delta);
         if (this.tooltip != null) {
-            this.renderOrderedTooltip(matrices, this.tooltip, mouseX, mouseY);
+            this.renderTooltip(matrices, this.tooltip, mouseX, mouseY);
         }
 
     }
 
-    public void setTooltip(List<OrderedText> tooltip) {
+    public void setTooltipForNextRenderPass(List<FormattedCharSequence> tooltip) {
         this.tooltip = tooltip;
     }
 
@@ -114,14 +114,14 @@ public class SelectDevice extends Screen {
 
     public void removed() {
         if (this.levelList != null) {
-            this.levelList.children().forEach(WorldListWidget.Entry::close);
+            this.levelList.children().forEach(WorldSelectionList.Entry::close);
         }
 
     }
 
     public Supplier<String> getSearchFilter() {
         return () -> {
-            return this.searchBox.getText();
+            return this.searchBox.getValue();
         };
     }
 }
