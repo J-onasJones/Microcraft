@@ -2,6 +2,7 @@ package me.jonasjones.microcraft.mixin;
 
 import me.jonasjones.microcraft.gui.screens.BoardScreen;
 import me.jonasjones.microcraft.gui.screens.GuiHome;
+import me.jonasjones.microcraft.gui.widget.ImageBackgroundButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.Screen;
@@ -25,26 +26,6 @@ public class TitleScreenMixin extends Screen {
         super(component);
     }
 
-//    @Inject(at = @At("HEAD"), method = "init")
-//    private void gameMenuScreenButton(CallbackInfo ci) {
-//        final ResourceLocation ICON_TEXTURE = new ResourceLocation(MOD_ID, "gui/button_icon.png");
-//
-//        int buttonX = this.width / 2 + 108;
-//        int buttonY = 3 * this.height / 4 + 8;
-//
-//        this.addRenderableWidget(new Button.Builder(Component.empty(), (b) -> {
-//            this.minecraft.setScreen(new GuiHome(this));
-//        }).bounds(buttonX, buttonY, 20, 20).build());
-//
-////        this.addRenderableWidget(new ImageButton(buttonX, buttonY,
-////                                                 20, 20,
-////                                                 0, 0, 0,
-////                                                 ICON_TEXTURE,
-////                                                 20, 20,
-////                                                 (buttonWidget) -> this.minecraft.setScreen(new GuiHome(this))
-////        ));
-//    }
-
     @Inject(at = @At("RETURN"), method = "createNormalMenuOptions")
 	private void titleScreenButton(int y, int spacingY, CallbackInfo ci) {
 
@@ -53,11 +34,7 @@ public class TitleScreenMixin extends Screen {
         int buttonX = this.width / 2 + 104;
         int buttonY = y + spacingY * 2;
 
-//        this.addRenderableWidget(new Button.Builder(Component.literal(""), (button) -> {
-//            this.minecraft.setScreen(new BoardScreen(this));
-//        }).bounds(buttonX, buttonY, 20, 20).build());
-
-        this.addRenderableWidget(new ImageButton(buttonX, buttonY, 20, 20, 0, 0, 0, ICON_TEXTURE, 20, 20,
-                                                 (buttonWidget) -> this.minecraft.setScreen(new BoardScreen(this))));
+        this.addRenderableWidget(new ImageBackgroundButton(buttonX, buttonY, 20, 20, ICON_TEXTURE, 20, 20,
+                                                           (buttonWidget) -> this.minecraft.setScreen(new BoardScreen(this))));
     }
 }
