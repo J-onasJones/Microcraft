@@ -2,6 +2,7 @@ package me.jonasjones.microcraft.mixin;
 
 import me.jonasjones.microcraft.gui.screens.BoardScreen;
 import me.jonasjones.microcraft.gui.screens.GuiHome;
+import me.jonasjones.microcraft.gui.screens.TestDevScreen;
 import me.jonasjones.microcraft.gui.widget.ImageBackgroundButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -35,6 +36,6 @@ public class TitleScreenMixin extends Screen {
         int buttonY = y + spacingY * 2;
 
         this.addRenderableWidget(new ImageBackgroundButton(buttonX, buttonY, 20, 20, ICON_TEXTURE, 20, 20,
-                                                           (buttonWidget) -> this.minecraft.setScreen(new BoardScreen(this))));
+                                                           (buttonWidget) -> this.minecraft.setScreen(new TestDevScreen())));
     }
 }
