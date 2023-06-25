@@ -1,10 +1,10 @@
 package me.jonasjones.microcraft.config;
 
 import me.jonasjones.microcraft.object.BoardData;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,8 +12,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ProfileConfig {
-    public static void uwu() throws IOException, ParseException {
-        JSONObject jsonObject = new JSONObject();
+    public static void uwu() throws IOException {
+
+  /*      JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         JSONObject defaultBoardProfile = new JSONObject();
         JSONArray defaultBoardProfilePinMaps = new JSONArray();
@@ -40,7 +41,7 @@ public class ProfileConfig {
         JSONParser jsonParser = new JSONParser();
 
 
-        JSONObject uwu = (JSONObject) jsonParser.parse(str);
+        JSONObject uwu = (JSONObject) jsonParser.parse(str);*/
         /*System.out.print(uwu.toJSONString());*/
     }
 }

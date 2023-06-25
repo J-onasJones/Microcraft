@@ -1,7 +1,6 @@
 package me.jonasjones.microcraft.config;
 
 import com.mojang.datafixers.util.Pair;
-
 import me.jonasjones.microcraft.Microcraft;
 import me.jonasjones.microcraft.util.VerboseLogger;
 

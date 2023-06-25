@@ -3,7 +3,6 @@ package me.jonasjones.microcraft.util.boardmanager;
 
 import com.fazecast.jSerialComm.SerialPort;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

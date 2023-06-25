@@ -1,7 +1,6 @@
 package me.jonasjones.microcraft.config;
 
 import com.mojang.datafixers.util.Pair;
-
 import me.jonasjones.microcraft.config.SimpleConfig.DefaultConfig;
 
 import java.util.ArrayList;

@@ -2,7 +2,6 @@ package me.jonasjones.microcraft;
 
 import me.jonasjones.microcraft.config.ModConfigs;
 import me.jonasjones.microcraft.config.ProfileConfig;
-import me.jonasjones.microcraft.util.boardmanager.SerialNumberScanner;
 import net.fabricmc.api.ClientModInitializer;
 import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
@@ -43,9 +42,6 @@ public class Microcraft implements ClientModInitializer {
 			ProfileConfig.uwu();
 		} catch (IOException e) {
 			LOGGER.error("AHHHHHHHHHHHHHHHHHHHHH IO");
-			System.out.print(e);
-		} catch (ParseException e) {
-			LOGGER.error("AHHHHHHHHHHHHHHHHHHHHH PARSE");
 			System.out.print(e);
 		}
 	}
