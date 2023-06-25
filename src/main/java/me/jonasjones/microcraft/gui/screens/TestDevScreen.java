@@ -15,19 +15,19 @@ public class TestDevScreen extends Screen {
         super.init();
 
         Button testButton = new Button.Builder(Component.literal("Test Button 1"), (button) -> {
-            System.out.println("Test Button Pressed");
+            testFunction1();
         }).bounds(20, this.height - 40, 80, 20).build();
 
         Button testButton2 = new Button.Builder(Component.literal("Test Button 2"), (button) -> {
-            System.out.println("Test Button Pressed");
+            testFunction2();
         }).bounds(120, this.height - 40, 80, 20).build();
 
         Button testButton3 = new Button.Builder(Component.literal("Test Button 3"), (button) -> {
-            System.out.println("Test Button Pressed");
+            testFunction3();
         }).bounds(220, this.height - 40, 80, 20).build();
 
         Button testButton4 = new Button.Builder(Component.literal("Test Button 4"), (button) -> {
-            System.out.println("Test Button Pressed");
+            testFunction4();
         }).bounds(320, this.height- 40 , 80, 20).build();
 
         this.addRenderableWidget(testButton);
@@ -40,5 +40,21 @@ public class TestDevScreen extends Screen {
     public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(poseStack);
         super.render(poseStack, mouseX, mouseY, partialTicks);
+    }
+
+    private void testFunction1() {
+        System.out.println("Test Function 1");
+    }
+
+    private void testFunction2() {
+        System.out.println("Test Function 2");
+    }
+
+    private void testFunction3() {
+        System.out.println("Test Function 3");
+    }
+
+    private void testFunction4() {
+        System.out.println("Test Function 4");
     }
 }
