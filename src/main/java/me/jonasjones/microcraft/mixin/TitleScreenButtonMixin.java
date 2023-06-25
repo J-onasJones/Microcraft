@@ -30,6 +30,7 @@ package me.jonasjones.microcraft.mixin;
 //		this.addDrawableChild(ButtonWidget.builder( Text.of(""), (button) -> {
 //			this.client.setScreen(new BoardScreen(this));
 //		}).dimensions(buttonX, buttonY, 20, 20).build());
-//		this.addDrawableChild( new TexturedButtonWidget(buttonX, buttonY, 20, 20, 0, 0, 0, ICON_TEXTURE, 20, 20, (buttonWidget) -> this.client.setScreen(new BoardScreen(this))));
+//		this.addDrawableChild( new TexturedButtonWidget(buttonX, buttonY, 20, 20, 0, 0, 0, ICON_TEXTURE, 20, 20,
+//		(buttonWidget) -> this.client.setScreen(new BoardScreen(this))));
 //	}
 //}

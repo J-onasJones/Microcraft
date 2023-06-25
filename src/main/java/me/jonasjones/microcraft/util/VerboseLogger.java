@@ -9,24 +9,28 @@ public class VerboseLogger {
             Microcraft.VERBOSELOGGER.info(message);
         }
     }
-    public void debug(String message) {
-        if (ModConfigs.VERBOSE) {
-            Microcraft.VERBOSELOGGER.debug(message);
-        }
-    }
+
     public static void error(String message) {
         if (ModConfigs.VERBOSE) {
             Microcraft.VERBOSELOGGER.error(message);
         }
     }
-    public static void trace( String message) {
+
+    public static void trace(String message) {
         if (ModConfigs.VERBOSE) {
             Microcraft.VERBOSELOGGER.trace(message);
         }
     }
-    public static void warn( String message) {
+
+    public static void warn(String message) {
         if (ModConfigs.VERBOSE) {
             Microcraft.VERBOSELOGGER.warn(message);
+        }
+    }
+
+    public void debug(String message) {
+        if (ModConfigs.VERBOSE) {
+            Microcraft.VERBOSELOGGER.debug(message);
         }
     }
 }

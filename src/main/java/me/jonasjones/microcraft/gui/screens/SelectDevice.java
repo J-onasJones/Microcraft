@@ -23,13 +23,13 @@ import java.util.function.Supplier;
 public class SelectDevice extends Screen {
     private static final Logger LOGGER = LogUtils.getLogger();
     protected final Screen parent;
+    protected EditBox searchBox;
     @Nullable
     private List<FormattedCharSequence> tooltip;
     private Button deleteButton;
     private Button selectButton;
     private Button editButton;
     private Button recreateButton;
-    protected EditBox searchBox;
     private WorldSelectionList levelList;
 
     public SelectDevice(Screen parent) {
@@ -47,27 +47,30 @@ public class SelectDevice extends Screen {
 
     protected void init() {
         //this.client.keyboard.setRepeatEvents(true);
-        this.searchBox = new EditBox(this.font, this.width / 2 - 100, 22, 200, 20, this.searchBox, Component.translatable("selectWorld.search"));
+        this.searchBox = new EditBox(this.font, this.width / 2 - 100, 22, 200, 20, this.searchBox,
+                                     Component.translatable("selectWorld.search"));
         this.searchBox.setResponder((search) -> {
             //this.levelList.filter(search);
         });
         SelectWorldScreen uwu = new SelectWorldScreen(this);
-        //this.levelList = new WorldListWidget(uwu, this.client, this.width, this.height, 48, this.height - 64, 36, this.getSearchFilter(), this.levelList);
+        //this.levelList = new WorldListWidget(uwu, this.client, this.width, this.height, 48, this.height - 64, 36,
+        // this.getSearchFilter(), this.levelList);
         this.addWidget(this.searchBox);
         this.addWidget(this.levelList);
-        this.selectButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.select"), (button) -> {
+        this.selectButton = (Button) this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.select"), (button) -> {
             this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::joinWorld);
         }).bounds(this.width / 2 - 154, this.height - 52, 150, 20).build());
         this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.create"), (button) -> {
             CreateWorldScreen.openFresh(this.minecraft, this);
         }).bounds(this.width / 2 + 4, this.height - 52, 150, 20).build());
-        this.editButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.edit"), (button) -> {
+        this.editButton = (Button) this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.edit")
+                , (button) -> {
             this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::editWorld);
         }).bounds(this.width / 2 - 154, this.height - 28, 72, 20).build());
-        this.deleteButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.delete"), (button) -> {
+        this.deleteButton = (Button) this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.delete"), (button) -> {
             this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::deleteWorld);
         }).bounds(this.width / 2 - 76, this.height - 28, 72, 20).build());
-        this.recreateButton = (Button)this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.recreate"), (button) -> {
+        this.recreateButton = (Button) this.addRenderableWidget(Button.builder(Component.translatable("selectWorld.recreate"), (button) -> {
             this.levelList.getSelectedOpt().ifPresent(WorldSelectionList.WorldListEntry::recreateWorld);
         }).bounds(this.width / 2 + 4, this.height - 28, 72, 20).build());
         this.addRenderableWidget(Button.builder(CommonComponents.GUI_CANCEL, (button) -> {
@@ -78,7 +81,8 @@ public class SelectDevice extends Screen {
     }
 
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        return super.keyPressed(keyCode, scanCode, modifiers) ? true : this.searchBox.keyPressed(keyCode, scanCode, modifiers);
+        return super.keyPressed(keyCode, scanCode, modifiers) ? true : this.searchBox.keyPressed(keyCode, scanCode,
+                                                                                                 modifiers);
     }
 
     public void onClose() {

@@ -13,10 +13,11 @@ import net.minecraft.network.chat.Component;
 public class ModSettings extends Screen {
     private final Screen parent;
 
-    public ModSettings (Screen parent) {
+    public ModSettings(Screen parent) {
         super(Component.nullToEmpty("MicrocontrollerMC Controls"));
         this.parent = parent;
     }
+
     protected void init() {
 
 

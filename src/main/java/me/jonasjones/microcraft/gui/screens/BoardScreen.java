@@ -13,10 +13,11 @@ import net.minecraft.network.chat.Component;
 public class BoardScreen extends Screen {
     private final Screen parent;
 
-    public BoardScreen (Screen parent) {
+    public BoardScreen(Screen parent) {
         super(Component.nullToEmpty("Microcraft Configuration"));
         this.parent = parent;
     }
+
     protected void init() {
 
 

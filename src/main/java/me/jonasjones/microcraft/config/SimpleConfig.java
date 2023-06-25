@@ -39,51 +39,30 @@ public class SimpleConfig {
     private final ConfigRequest request;
     private boolean broken = false;
 
-    public interface DefaultConfig {
-        String get(String namespace);
+    private SimpleConfig(ConfigRequest request) {
+        this.request = request;
+        String identifier = "Config '" + request.filename + "'";
 
-        static String empty(String namespace) {
-            return "";
-        }
-    }
+        if (!request.file.exists()) {
+            Microcraft.LOGGER.info(identifier + " is missing, generating default one...");
 
-    public static class ConfigRequest {
-
-        private final File file;
-        private final String filename;
-        private DefaultConfig provider;
-
-        private ConfigRequest(File file, String filename) {
-            this.file = file;
-            this.filename = filename;
-            this.provider = DefaultConfig::empty;
+            try {
+                createConfig();
+            } catch (IOException e) {
+                Microcraft.LOGGER.error(identifier + " failed to generate!");
+                Microcraft.LOGGER.trace(String.valueOf(e));
+                broken = true;
+            }
         }
 
-        /**
-         * Sets the default config provider, used to generate the
-         * config if it's missing.
-         *
-         * @param provider default config provider
-         * @return current config request object
-         * @see DefaultConfig
-         */
-        public ConfigRequest provider(DefaultConfig provider) {
-            this.provider = provider;
-            return this;
-        }
-
-        /**
-         * Loads the config from the filesystem.
-         *
-         * @return config object
-         * @see SimpleConfig
-         */
-        public SimpleConfig request() {
-            return new SimpleConfig(this);
-        }
-
-        private String getConfig() {
-            return provider.get(filename) + "\n";
+        if (!broken) {
+            try {
+                loadConfig();
+            } catch (Exception e) {
+                Microcraft.LOGGER.error(identifier + " failed to load!");
+                Microcraft.LOGGER.trace(String.valueOf(e));
+                broken = true;
+            }
         }
 
     }
@@ -131,34 +110,6 @@ public class SimpleConfig {
                 throw new RuntimeException("Syntax error in config file on line " + line + "!");
             }
         }
-    }
-
-    private SimpleConfig(ConfigRequest request) {
-        this.request = request;
-        String identifier = "Config '" + request.filename + "'";
-
-        if (!request.file.exists()) {
-            Microcraft.LOGGER.info(identifier + " is missing, generating default one...");
-
-            try {
-                createConfig();
-            } catch (IOException e) {
-                Microcraft.LOGGER.error(identifier + " failed to generate!");
-                Microcraft.LOGGER.trace(String.valueOf(e));
-                broken = true;
-            }
-        }
-
-        if (!broken) {
-            try {
-                loadConfig();
-            } catch (Exception e) {
-                Microcraft.LOGGER.error(identifier + " failed to load!");
-                Microcraft.LOGGER.trace(String.valueOf(e));
-                broken = true;
-            }
-        }
-
     }
 
     /**
@@ -244,8 +195,58 @@ public class SimpleConfig {
      * @return true if the operation was successful
      */
     public boolean delete() {
-        VerboseLogger.warn("Config '" + request.filename + "' was removed from existence! Restart the game to regenerate it.");
+        VerboseLogger.warn("Config '" + request.filename + "' was removed from existence! Restart the game to " +
+                                   "regenerate it.");
         return request.file.delete();
+    }
+
+    public interface DefaultConfig {
+        static String empty(String namespace) {
+            return "";
+        }
+
+        String get(String namespace);
+    }
+
+    public static class ConfigRequest {
+
+        private final File file;
+        private final String filename;
+        private DefaultConfig provider;
+
+        private ConfigRequest(File file, String filename) {
+            this.file = file;
+            this.filename = filename;
+            this.provider = DefaultConfig::empty;
+        }
+
+        /**
+         * Sets the default config provider, used to generate the
+         * config if it's missing.
+         *
+         * @param provider default config provider
+         * @return current config request object
+         * @see DefaultConfig
+         */
+        public ConfigRequest provider(DefaultConfig provider) {
+            this.provider = provider;
+            return this;
+        }
+
+        /**
+         * Loads the config from the filesystem.
+         *
+         * @return config object
+         * @see SimpleConfig
+         */
+        public SimpleConfig request() {
+            return new SimpleConfig(this);
+        }
+
+        private String getConfig() {
+            return provider.get(filename) + "\n";
+        }
+
     }
 
 }
